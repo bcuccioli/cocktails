@@ -1,0 +1,77 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "mocha": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:all"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "array-element-newline": ["error", "consistent"],
+        "camelcase": "off",
+        "capitalized-comments": ["error", "always", {"ignoreConsecutiveComments": true, "ignoreInlineComments": true}],
+        "comma-dangle": ["error", "always-multiline"],
+        "consistent-return": "off",
+        "default-case": "off",
+        "dot-location": ["error", "property"],
+        "func-names": "error",
+        "func-style": "off",
+        "function-call-argument-newline": ["error", "consistent"],
+        "function-paren-newline": ["error", "consistent"],
+        "global-require": "off",
+        "id-length": "off",
+        "implicit-arrow-linebreak": "off",
+        "indent": ["error", 2],
+        "lines-between-class-members": ["error", "always", {"exceptAfterSingleLine": true}],
+        "max-classes-per-file": "off",
+        "max-len": "off",
+        "max-lines": "off",
+        "max-lines-per-function": "off",
+        "max-params": "off",
+        "max-statements": "off",
+        "multiline-comment-style": "off",
+        "new-cap": "off",
+        "newline-per-chained-call": ["error", {"ignoreChainWithDepth": 2}],
+        "no-alert": "off",
+        "no-await-in-loop": "off",
+        "no-bitwise": "off",
+        "no-constant-condition": ["error", {"checkLoops": false}],
+        "no-inline-comments": "off",
+        "no-invalid-this": "off",
+        "no-magic-numbers": "off",
+        "no-mixed-operators": "off",
+        "no-process-exit": "off",
+        "no-sync": "off",
+        "no-ternary": "off",
+        "no-underscore-dangle": "off",
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
+        "object-property-newline": "off",
+        "object-shorthand": "off",
+        "one-var": "off",
+        "padded-blocks": "off",
+        "prefer-destructuring": "off",
+        "quote-props": ["error", "consistent-as-needed"],
+        "quotes": ["error", "single"],
+        "require-await": "off",
+        "require-jsdoc": "off",
+        "sort-imports": ["error", {"ignoreCase": true}],
+        "sort-keys": "off",
+        "space-before-function-paren": ["error", {"anonymous": "never", "named": "never", "asyncArrow": "always"}],
+        "valid-jsdoc": "off"
+    }
+}
