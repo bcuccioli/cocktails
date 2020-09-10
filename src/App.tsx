@@ -8,9 +8,15 @@ interface TState {
   bar: Set<Ingredient>;
 }
 
+function loadFromLS() {
+  const s = window.localStorage.getItem('bar');
+  const list: string[] = s ? JSON.parse(s) : [];
+  return new Set(list);
+}
+
 class Application extends React.Component {
   state: TState = {
-    bar: new Set(),
+    bar: loadFromLS(),
   };
 
   render() {
@@ -34,6 +40,8 @@ class Application extends React.Component {
     } else {
       bar.add(i);
     }
+
+    window.localStorage.setItem('bar', JSON.stringify([...bar]));
 
     this.setState({
       ...this.state,
