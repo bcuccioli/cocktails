@@ -1,25 +1,42 @@
 import * as React from 'react';
 import Bar from './Bar';
-import DataStore from './util/DataStore';
 import {Ingredient} from './util/Types';
 import {render} from 'react-dom';
 
 interface TState {
-  bar: Ingredient[];
+  bar: Set<Ingredient>;
 }
 
 class Application extends React.Component {
   state: TState = {
-    bar: [],
+    bar: new Set(),
   };
 
   render() {
     return (
       <React.Fragment>
         <h1>Cocktails</h1>
-        <Bar ingredients={this.state.bar} />
+        <Bar
+          selectedIngredients={this.state.bar}
+          onAddRemove={this.updateIngredient.bind(this)}
+        />
       </React.Fragment>
     );
+  }
+
+  private updateIngredient(i: Ingredient) {
+    const bar = new Set(this.state.bar);
+
+    if (bar.has(i)) {
+      bar.delete(i);
+    } else {
+      bar.add(i);
+    }
+
+    this.setState({
+      ...this.state,
+      bar: bar,
+    });
   }
 }
 

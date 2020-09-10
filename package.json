@@ -2,14 +2,16 @@
   "name": "cocktails",
   "main": "index.js",
   "scripts": {
-    "prebuild": "run-s clean",
     "build": "parcel build src/index.html --no-source-maps",
     "clean": "rimraf ./dist",
     "start": "parcel src/index.html",
     "lint": "eslint --ext ts,tsx src",
-    "go": "run-s lint prebuild build start"
+    "go": "run-s lint build start"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.31.0",
+    "@blueprintjs/select": "^3.13.7",
+    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

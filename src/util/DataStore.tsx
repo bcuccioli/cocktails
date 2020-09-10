@@ -17,12 +17,14 @@ export default class DataStore {
   _ingredients: Set<Ingredient>;
 
   constructor() {
-    const ingredients = Array.prototype.concat.apply(([] as string[]),
+    const ingredients = Array.prototype.concat.apply([] as string[],
       loadData().map((d) => d.ingredients));
     this._ingredients = new Set(ingredients);
   }
 
   ingredients() {
-    return this._ingredients;
+    const all = [...this._ingredients];
+    all.sort();
+    return all;
   }
 }

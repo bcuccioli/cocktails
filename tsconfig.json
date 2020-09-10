@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./",
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -10,6 +11,8 @@
     "target": "es6",
     "resolveJsonModule": true,
     "jsx": "react"
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
 
