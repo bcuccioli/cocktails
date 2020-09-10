@@ -1,30 +1,75 @@
 import * as data from '../data/drinks.json';
 import {Ingredient} from './Types';
 
-type RawData = {
+type CocktailData = {
   name: string;
   img: string;
-  ingredients: string[];
+  ingredients: Set<Ingredient>;
   measures: string[];
-  instructions?: string;
+  instructions: string;
 }[];
 
-function loadData(): RawData {
-  return Object.keys(data).map((k) => data[k as unknown as number]);
+function loadData() {
+  return Object.keys(data)
+    .filter((idx) => !isNaN(idx as any))
+    .map((k) => data[k as unknown as number]);
 }
 
-export default class DataStore {
-  _ingredients: Set<Ingredient>;
+function contains<T>(set: Set<T>, subset: Set<T>) {
+  for (const s of subset) {
+    if (!set.has(s)) {
+      return false;
+    }
+  }
+  return true;
+}
 
-  constructor() {
-    const ingredients = Array.prototype.concat.apply([] as string[],
-      loadData().map((d) => d.ingredients));
-    this._ingredients = new Set(ingredients);
+class DataStoreImpl {
+  _ingredients: Ingredient[];
+  _cocktails: CocktailData;
+
+  constructor(
+    ingredients: Ingredient[],
+    cocktails: CocktailData,
+  ) {
+    this._ingredients = ingredients;
+    this._cocktails = cocktails;
   }
 
   ingredients() {
-    const all = [...this._ingredients];
-    all.sort();
-    return all;
+    return this._ingredients;
+  }
+
+  available(bar: Set<Ingredient>) {
+    return this._cocktails.filter((c) => contains(bar, c.ingredients));
+  }
+}
+
+export default class DataStore {
+  private static d: DataStoreImpl;
+
+  public static get() {
+    if (!DataStore.d) {
+      const rawData = loadData();
+
+      const ingredients = Array.prototype.concat.apply([] as string[],
+        rawData.map((d) => d.ingredients));
+
+      const ingredientsDedup = [...new Set(ingredients)];
+      ingredientsDedup.sort();
+
+      const cocktails = rawData.map((d) => ({
+        ...d,
+        ingredients: new Set(d.ingredients),
+        instructions: d.instructions || '',
+      }));
+
+      DataStore.d = new DataStoreImpl(
+        ingredientsDedup,
+        cocktails,
+      );
+    }
+
+    return DataStore.d;
   }
 }

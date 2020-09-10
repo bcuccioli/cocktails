@@ -4,8 +4,6 @@ import {ItemRenderer, MultiSelect} from '@blueprintjs/select';
 import DataStore from './util/DataStore';
 import {Ingredient} from './util/Types';
 
-const allIngredients = new DataStore().ingredients();
-
 const IngredientSelect = MultiSelect.ofType<Ingredient>();
 
 function renderItem(selectedSet: Set<Ingredient>): ItemRenderer<Ingredient> {
@@ -25,7 +23,7 @@ const Bar: React.FunctionComponent<{
   onAddRemove: (_: Ingredient) => void;
 }> = (props) =>
   <IngredientSelect
-    items={allIngredients}
+    items={DataStore.get().ingredients()}
     selectedItems={[...props.selectedIngredients]}
     itemRenderer={renderItem(props.selectedIngredients)}
     tagRenderer={(i) => i}

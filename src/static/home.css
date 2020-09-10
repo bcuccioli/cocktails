@@ -1,0 +1,19 @@
+body {
+  margin: 1em !important;
+}
+
+#available {
+  max-width: 60ex;
+}
+
+.bp3-card {
+  margin-bottom: 2em;
+}
+
+img {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  max-height: 300px;
+  max-width: 300px;
+}

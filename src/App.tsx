@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Available from './Available';
 import Bar from './Bar';
 import {Ingredient} from './util/Types';
 import {render} from 'react-dom';
@@ -20,6 +21,7 @@ class Application extends React.Component {
           selectedIngredients={this.state.bar}
           onAddRemove={this.updateIngredient.bind(this)}
         />
+        <Available selectedIngredients={this.state.bar} />
       </React.Fragment>
     );
   }
