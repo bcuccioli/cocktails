@@ -46,8 +46,7 @@ const Recommended: React.FunctionComponent<{
             <React.Fragment key={idx}>
               <Cocktail key={idx} {...cocktails[idx]} />
               <Divider />
-            </React.Fragment>
-          )}
+            </React.Fragment>)}
         </Card>)}
     </div>
   );
