@@ -2,7 +2,11 @@ body {
   margin: 1em !important;
 }
 
-#available {
+header {
+  max-width: 60ex;
+}
+
+#available, #recommendations {
   max-width: 60ex;
 }
 

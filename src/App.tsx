@@ -22,11 +22,13 @@ class Application extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Cocktails</h1>
-        <Bar
-          selectedIngredients={this.state.bar}
-          onAddRemove={this.updateIngredient.bind(this)}
-        />
+        <header>
+          <h1>Cocktails</h1>
+          <Bar
+            selectedIngredients={this.state.bar}
+            onAddRemove={this.updateIngredient.bind(this)}
+          />
+        </header>
         <Available selectedIngredients={this.state.bar} />
         <Recommended selectedIngredients={this.state.bar} />
       </React.Fragment>
