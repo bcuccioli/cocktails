@@ -1,4 +1,4 @@
-import * as data from '../data/drinks.json';
+import * as _rawData from '../data/drinks.json';
 
 type Cocktail = {
   name: string;
@@ -8,10 +8,28 @@ type Cocktail = {
   instructions: string;
 };
 
+function parse(s: string) {
+  if (s[0].toUpperCase() === s[0].toLowerCase()) {
+    // First character is not a letter.
+    return null;
+  }
+  return s.toLowerCase();
+}
+
+function compact<T>(s: T | null): s is T {
+  return s !== null;
+}
+
 function loadData() {
-  return Object.keys(data)
+  const data = Object.keys(_rawData)
     .filter((idx) => !isNaN(idx as any))
-    .map((k) => data[k as unknown as number]);
+    .map((k) => _rawData[k as unknown as number]);
+
+  return data.map((c) => ({
+    ...c,
+    ingredients: c.ingredients.map(parse).filter(compact),
+  }))
+    .filter((c) => c.ingredients.length > 0);
 }
 
 function contains<T>(set: Set<T>, subset: Set<T>) {
