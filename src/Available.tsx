@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Card} from '@blueprintjs/core';
 import Cocktail from './Cocktail';
 import DataStore from './util/DataStore';
-import {Ingredient} from './util/Types';
 
-const rand = () => Math.random().toString(36).substr(0, 8);
+const rand = () => Math.random().toString(36)
+  .substr(0, 8);
 
 const Available: React.FunctionComponent<{
-  selectedIngredients: Set<Ingredient>;
+  selectedIngredients: Set<string>;
 }> = (props) => {
   if (props.selectedIngredients.size === 0) {
     return <div></div>;

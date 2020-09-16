@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Available from './Available';
 import Bar from './Bar';
-import {Ingredient} from './util/Types';
 import Recommended from './Recommended';
 import {render} from 'react-dom';
 
 interface TState {
-  bar: Set<Ingredient>;
+  bar: Set<string>;
 }
 
 function loadFromLS() {
@@ -34,7 +33,7 @@ class Application extends React.Component {
     );
   }
 
-  private updateIngredient(i: Ingredient) {
+  private updateIngredient(i: string) {
     const bar = new Set(this.state.bar);
 
     if (bar.has(i)) {

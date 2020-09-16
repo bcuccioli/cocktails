@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Card, Divider} from '@blueprintjs/core';
 import Cocktail from './Cocktail';
 import DataStore from './util/DataStore';
-import {Ingredient} from './util/Types';
 
 function difference<T>(s: Set<T>, t: Set<T>) {
   // Return the set s \ t.
@@ -10,7 +9,7 @@ function difference<T>(s: Set<T>, t: Set<T>) {
 }
 
 const Recommended: React.FunctionComponent<{
-  selectedIngredients: Set<Ingredient>;
+  selectedIngredients: Set<string>;
 }> = (props) => {
   if (props.selectedIngredients.size === 0) {
     return <div></div>;

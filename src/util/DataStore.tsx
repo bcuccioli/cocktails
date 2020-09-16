@@ -1,10 +1,9 @@
 import * as data from '../data/drinks.json';
-import {Ingredient} from './Types';
 
 type Cocktail = {
   name: string;
   img: string;
-  ingredients: Set<Ingredient>;
+  ingredients: Set<string>;
   measures: string[];
   instructions: string;
 };
@@ -25,14 +24,14 @@ function contains<T>(set: Set<T>, subset: Set<T>) {
 }
 
 class DataStoreImpl {
-  _ingredients: Ingredient[];
+  _ingredients: string[];
   _cocktails: Cocktail[];
-  _ctMap: Map<number, Set<Ingredient>>;
+  _ctMap: Map<number, Set<string>>;
 
   constructor(
-    ingredients: Ingredient[],
+    ingredients: string[],
     cocktails: Cocktail[],
-    ctMap: Map<number, Set<Ingredient>>,
+    ctMap: Map<number, Set<string>>,
   ) {
     this._ingredients = ingredients;
     this._cocktails = cocktails;
@@ -47,7 +46,7 @@ class DataStoreImpl {
     return this._cocktails;
   }
 
-  available(bar: Set<Ingredient>) {
+  available(bar: Set<string>) {
     return this._cocktails.filter((c) => contains(bar, c.ingredients));
   }
 
@@ -75,7 +74,7 @@ export default class DataStore {
         instructions: d.instructions || '',
       }));
 
-      const ctMap: Map<number, Set<Ingredient>> = new Map();
+      const ctMap: Map<number, Set<string>> = new Map();
 
       for (let i = 0; i < cocktails.length; i += 1) {
         ctMap.set(i, cocktails[i].ingredients);

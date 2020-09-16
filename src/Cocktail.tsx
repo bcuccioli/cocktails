@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-const rand = () => Math.random().toString(36).substr(0, 8);
+const rand = () => Math.random().toString(36)
+  .substr(0, 8);
 
 const Cocktail: React.FunctionComponent<{
   name: string;
