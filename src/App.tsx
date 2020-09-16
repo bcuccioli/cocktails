@@ -2,6 +2,7 @@ import * as React from 'react';
 import Available from './Available';
 import Bar from './Bar';
 import {Ingredient} from './util/Types';
+import Recommended from './Recommended';
 import {render} from 'react-dom';
 
 interface TState {
@@ -28,6 +29,7 @@ class Application extends React.Component {
           onAddRemove={this.updateIngredient.bind(this)}
         />
         <Available selectedIngredients={this.state.bar} />
+        <Recommended selectedIngredients={this.state.bar} />
       </React.Fragment>
     );
   }
