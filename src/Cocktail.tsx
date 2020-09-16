@@ -1,7 +1,8 @@
 import * as React from 'react';
 
+const rand = () => Math.random().toString(36).substr(0, 8);
+
 const Cocktail: React.FunctionComponent<{
-  idx: number;
   name: string;
   img: string;
   instructions: string;
@@ -13,8 +14,8 @@ const Cocktail: React.FunctionComponent<{
     <br />
     <i>{props.instructions}</i>
     <h5>Ingredients</h5>
-    <ul>
-      {[...props.ingredients].map((i) => <li key={props.idx}>{i}</li>)}
+    <ul key={rand()}>
+      {[...props.ingredients].map((i) => <li key={rand()}>{i}</li>)}
     </ul>
   </React.Fragment>;
 

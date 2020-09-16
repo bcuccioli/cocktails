@@ -46,7 +46,7 @@ const Recommended: React.FunctionComponent<{
           for...
           <Divider />
           {r[1].map((idx) =>
-            <Cocktail idx={k} {...cocktails[idx]} />)}
+            <Cocktail key={idx} {...cocktails[idx]} />)}
         </Card>)}
     </div>
   );

@@ -4,6 +4,8 @@ import Cocktail from './Cocktail';
 import DataStore from './util/DataStore';
 import {Ingredient} from './util/Types';
 
+const rand = () => Math.random().toString(36).substr(0, 8);
+
 const Available: React.FunctionComponent<{
   selectedIngredients: Set<Ingredient>;
 }> = (props) => {
@@ -16,9 +18,9 @@ const Available: React.FunctionComponent<{
   return (
     <div id="available">
       <h1>Available</h1>
-      {available.map((c, k) =>
-        <Card key={k} interactive={true}>
-          <Cocktail idx={k} {...c} />
+      {available.map((c) =>
+        <Card key={rand()} interactive={true}>
+          <Cocktail {...c} />
         </Card>)}
     </div>
   );
