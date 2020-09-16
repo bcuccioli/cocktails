@@ -40,12 +40,14 @@ const Recommended: React.FunctionComponent<{
       <h1>Recommendations</h1>
       {recommendations.map((r, k) =>
         <Card key={k} interactive={true}>
-          Add
-          {r[0]}
-          for...
+          Add {' '}{r[0]}{' '}for...
           <Divider />
           {r[1].map((idx) =>
-            <Cocktail key={idx} {...cocktails[idx]} />)}
+            <React.Fragment key={idx}>
+              <Cocktail key={idx} {...cocktails[idx]} />
+              <Divider />
+            </React.Fragment>
+          )}
         </Card>)}
     </div>
   );
