@@ -29,7 +29,7 @@ function loadData() {
     ...c,
     ingredients: c.ingredients.map(parse).filter(compact),
   }))
-    .filter((c) => c.ingredients.length > 0);
+    .filter((c) => c.ingredients.length > 1);
 }
 
 function contains<T>(set: Set<T>, subset: Set<T>) {
