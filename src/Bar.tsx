@@ -41,6 +41,7 @@ const Bar: React.FunctionComponent<{
     itemPredicate={filterItem}
     tagRenderer={(i) => i}
     onItemSelect={(i) => props.onAddRemove(i)}
+    resetOnSelect={true}
     tagInputProps={{
       onRemove: props.onAddRemove,
       tagProps: {
