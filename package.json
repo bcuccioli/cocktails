@@ -3,10 +3,12 @@
   "main": "index.js",
   "scripts": {
     "build": "parcel build src/index.html --no-source-maps",
+    "pkg": "parcel build src/index.html --out-dir dist/ --public-url ./",
     "clean": "rimraf ./dist ./.cache",
     "start": "parcel src/index.html",
     "lint": "eslint --ext ts,tsx src",
     "reload": "run-s build start",
+    "repkg": "run-s clean pkg",
     "all": "run-s lint build start"
   },
   "dependencies": {
