@@ -1,4 +1,5 @@
 import * as _rawData from '../data/drinks.json';
+import normalize from './Normalizations';
 
 type Cocktail = {
   name: string;
@@ -13,7 +14,7 @@ function parse(s: string) {
     // First character is not a letter.
     return null;
   }
-  return s.toLowerCase();
+  return normalize(s.toLowerCase());
 }
 
 function compact<T>(s: T | null): s is T {
